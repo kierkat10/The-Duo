@@ -1,0 +1,18 @@
+{
+	"id": "theduo",
+	"name": "The Duo",
+	"display_name": "The Duo",
+	"author": [
+		"Glitchkat10 and George The Rat"
+	],
+	"description": "A mod made by a Duo",
+	"prefix": "duo",
+	"main_file": "main.lua",
+	"priority": 27,
+	"badge_colour": "4f6367",
+	"badge_text_colour": "FFFFFF",
+	"version": "0.0.0",
+	"dependencies": [
+		"Steamodded"
+	]
+}
