@@ -15,7 +15,7 @@ SMODS.Atlas {
 SMODS.Joker {
 	key = "book",
 	name = "Book",
-	config = { extra = { odds = 1, Xmult_mod = 0.5, odds_mod = 0.5, Xmult = 1 } },
+	config = { extra = { odds = 3, Xmult_mod = 0.5, odds_mod = 1, Xmult = 1 } },
 	rarity = 3,
 	atlas =  "duo_placeholder",
 	blueprint_compat = true,
@@ -23,7 +23,7 @@ SMODS.Joker {
 	pos = { x = 4, y = 0 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds, card.ability.extra.Xmult_mod, card.ability.extra.odds_mod, card.ability.extra.Xmult } }
+		return { vars = { G.GAME and (G.GAME.probabilities.normal * 2) or 2, card.ability.extra.odds, card.ability.extra.Xmult_mod, card.ability.extra.odds_mod, card.ability.extra.Xmult } }
 	end,
 	calculate = function(self, card, context)
 		if (context.joker_main) or context.forcetrigger then
@@ -32,7 +32,7 @@ SMODS.Joker {
 			}
 		end
         if (context.end_of_round and not context.individual and not context.repetition) or context.forcetrigger then
-            if pseudorandom("theduo_book") < G.GAME.probabilities.normal / card.ability.extra.odds then
+            if pseudorandom("theduo_book") < (G.GAME.probabilities.normal * 2) / card.ability.extra.odds then
                 card.ability.extra.odds = card.ability.extra.odds + card.ability.extra.odds_mod
                 card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
             end
